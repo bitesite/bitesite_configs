@@ -32,6 +32,7 @@
   }
 }
 ```
+6. Every project should have prettier set up to run in GitHub actions or Git Hooks.
 
 ## Recommended
 
@@ -42,3 +43,5 @@
 2. Every project should have its own `.eslintrc.js` (ideally we publish our own extension, ours would extend "eslint:recommended", "plugin:react/recommended", "prettier")
 
 As a result: We would not set up ESLint as the formatter (that would be handled by prettier)
+
+3. Every project should have prettier set up to run in GitHub actions or Git Hooks.
