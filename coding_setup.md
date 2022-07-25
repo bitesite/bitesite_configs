@@ -39,7 +39,7 @@
 
 # ESLint
 
-1. Prettier should be installed in every project `yarn add --dev --exact eslint`
+1. ESLint should be installed in every project `yarn add --dev --exact eslint`
 2. Every project should have its own `.eslintrc.js` (ideally we publish our own extension, ours would extend "eslint:recommended", "plugin:react/recommended", "prettier")
 
 As a result: We would not set up ESLint as the formatter (that would be handled by prettier)
