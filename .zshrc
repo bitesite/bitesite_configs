@@ -148,3 +148,35 @@ export PATH="$HOME/.symfony/bin:$PATH"
 # PHP 5.6
 export PATH="/usr/local/opt/php@5.6/bin:$PATH"
 export PATH="/usr/local/opt/php@5.6/sbin:$PATH"
+
+# ACCESS RAILS CONSOLE
+heroku_console() {
+  # Usage: heroku_console your-app-name
+  local app_name=$1
+  heroku run "rails console -- --nomultiline" -a "$app_name"
+}
+
+kamal_console() {
+  # Usage: kamal_console production|staging
+  local app_name=$1
+  
+  if [[ "$app_name" == "production" ]]; then
+    kamal app exec --reuse -i "bin/rails console" -c config/deploy.production.yml
+  elif [[ "$app_name" == "staging" ]]; then
+    kamal app exec --reuse -i "bin/rails console" -c config/deploy.staging.yml
+  else
+    echo "Unknown environment: $app_name"
+  fi
+}
+
+# CREATE A NEW GIT BRANCH WITH DATE PREFIX
+newbr() {
+  # Usage: newbr branch-name
+  local branch_name=$1
+  if [[ -z "$branch_name" ]]; then
+    echo "Please provide a branch name"
+    return 1
+  fi
+  local date_prefix=$(date +"%Y%m%d")
+  git checkout -b "features/$date_prefix-$branch_name"
+}
